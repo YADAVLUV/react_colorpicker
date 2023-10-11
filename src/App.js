@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [selectedColor, setSelectedColor] = useState('#ff0000'); // Initial color (red)
+
+  const handleColorChange = (event) => {
+    setSelectedColor(event.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Color Picker</h1>
+      <input
+        type="color"
+        value={selectedColor}
+        onChange={handleColorChange}
+      />
+      <div
+        style={{
+          width: '100px',
+          height: '100px',
+          backgroundColor: selectedColor,
+          margin: '20px',
+        }}
+      ></div>
+      <p>Selected color: {selectedColor}</p>
     </div>
   );
 }
 
 export default App;
+
